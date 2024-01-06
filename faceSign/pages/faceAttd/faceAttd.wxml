@@ -1,0 +1,13 @@
+<!--pages/faceAttd/faceAttd.wxml-->
+<!--pages/faceRec/faceRec.wxml-->
+<view class="container">
+  <view class="info">
+    <text>点击拍照识别人脸</text>
+  </view>
+  <view class="main">
+        <camera class="camera" frame-size="large" device-position="front"></camera>
+        <view class="btnouter">
+            <view class='record' bindtap='record'>点击拍照</view>
+        </view>
+  </view>
+</view>

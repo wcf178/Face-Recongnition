@@ -1,0 +1,68 @@
+/* pages/myInfo/myInfo.wxss */
+page{
+  width:auto;
+  
+}
+.sign_contianer1{
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top:10px;
+  
+}
+.sign_list1{
+  background-color: #ccffff;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 20rpx;
+  border: 3rpx solid #3dd80e;
+	border-radius: 10rpx;
+  /*  阴影 */
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+
+  height: auto;
+  width:auto;
+  
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.signDetail1{
+  background-color: #ffffcc;
+  border: 3rpx solid #710ccf;
+	border-radius: 10rpx;
+  /*  阴影 */
+  box-shadow: 0 0 20rpx rgba(8, 55, 141, 0.15);
+  display: flex;
+  height: auto;
+  width: 100%;
+  margin: 10rpx;
+  padding: 20rpx;
+}
+
+.default_desc{
+  font-weight: 100xp;
+  position: relative;
+}
+.default1{
+  width: 100%;
+  height: auto;
+}
+.noAttd1{
+  align-self: center;
+  display:flex;
+  justify-content: center;
+}
+.change{
+  height: auto;
+}
+.inputText1 { 
+  flex: block; 
+  border: black;
+  border-width: 3rpx;
+  border-radius: 5rpx;
+  color: #000000; 
+  font-size: 14px
+ } 

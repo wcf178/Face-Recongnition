@@ -1,0 +1,47 @@
+<!--pages/myClass/myClass.wxml-->
+<view class="myclass_container"> 
+  <view class="myclass_list">
+    <text>您的考勤记录如下--下拉刷新</text>
+  </view>
+  
+  <view class="table" wx-if="{{listData.length > 0}}">
+    <view class="tr bg-w">
+      <view class="th">日期</view>
+      <view class="th">教师</view>
+      <view class="th ">科目</view>
+      <view class="th ">操作</view>
+    </view>
+  <block wx:for="{{listData}}" wx:key="{{index}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.attdDate}}</view>
+      <view class="td">{{item.teahName}}</view>
+      <view class="td">{{item.subName}}</view>
+      <view class="td">
+        <button 
+        type="primary" 
+        size="mini" 
+        bindtap="checkDetail"
+        plain="true"
+        data-index="{{index}}">查看</button>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.attdDate}}</view>
+      <view class="td">{{item.teahName}}</view>
+      <view class="td">{{item.subName}}</view>
+      <view class="td">
+        <button 
+        type="default" 
+        size="mini" 
+        bindtap="checkDetail"
+        data-index="{{index}}">查看</button>
+      </view>
+    </view>
+  </block>
+  </view>
+  <view class="default" wx-else>
+    <!-- <image class="no" src="../../image/pictures/无内容.png"></image> -->
+    <text class="noAttd">到底了~共{{listData.length}}条数据</text>
+  </view>
+</view>
+

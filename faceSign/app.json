@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/sign/sign",
+    "pages/myClass/myClass",
+    "pages/faceRec/faceRec",
+    "pages/Position/Position",
+    "pages/faceAttd/faceAttd",
+    "pages/LogDetail/LogDetail",
+    "pages/myInfo/myInfo",
+    "pages/aboutUs/aboutUs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "人脸签到",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/sign/sign",
+        "text": "我要考勤",
+        "iconPath": "/image/tab/sign.png",
+        "selectedIconPath": "/image/tab/sign-active.png"
+      },
+      {
+        "pagePath": "pages/myClass/myClass",
+        "text": "考勤记录",
+        "iconPath": "/image/tab/class.png",
+        "selectedIconPath": "/image/tab/class-active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的信息",
+        "iconPath": "/image/tab/home.png",
+        "selectedIconPath": "/image/tab/home-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

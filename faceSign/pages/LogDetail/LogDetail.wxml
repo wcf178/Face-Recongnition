@@ -1,0 +1,23 @@
+<!--pages/LogDetail/LogDetail.wxml-->
+<view>
+  <view class="card">
+    <text class="textInfo">教师姓名：{{teahName}}
+
+学科名称：{{subName}}
+
+考勤日期：{{attdDate}}
+
+上课时间：{{startTime}}
+
+下课时间：{{endTime}}
+
+签到时间：{{attdTime}}
+
+签退时间：{{leaveTime}}
+
+签到状态：{{attdState}}
+
+签退状态：{{leaveState}}</text>
+
+  </view>  
+</view>

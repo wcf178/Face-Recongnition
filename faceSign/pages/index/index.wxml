@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class='all'>
+    <view class="my-head">
+      <view class='my-user-information'>
+        <view class='bindloge' wx:if="{{!hasUserInfo && canIUse}}">
+          <button style='background-color: #FED61A;' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登录 </button>
+        </view>
+        <view class='user-img'>
+          <!-- <block>
+            <image bindtap="bindViewTap" class="{{userInfo?'userinfo-avatar':'noneuserinfo-avatar'}} " src="{{userInfo}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{nickName}}</text>
+          </block> -->
+          <block>
+            <image bindtap="bindViewTap" class="userinfo-avatar" 
+            src="../../image/myUser/avatar.jpg" mode="cover"></image>
+            <text class="userinfo-nickname">七百年前</text>
+          </block>
+        </view>
+        
+      </view>
+      
+    </view>
+
+    <view bindtap="myInfo" class="my-block bord10">
+        <image class="icon-w48" src="../../image/myUser/my-info.png"></image>
+    个人信息
+    <image class="icon-goRight" src="../../image/myUser/goright.png"></image>
+    </view>
+
+    <view bindtap="myCollect" class="my-block bord10" bindtap="faceRecord">
+        <image class="icon-w48" src="../../image/myUser/face.png"></image>
+    人脸录入
+    <image class="icon-goRight" src="../../image/myUser/goright.png"></image>
+    </view>
+
+    <view bindtap="businessInfo" class="my-block bord10">
+        <image class="icon-help" src="../../image/myUser/about.png"></image>
+    关于我们
+    <image class="icon-goRight" src="../../image/myUser/goright.png"></image>
+    </view>
+
+    <view bindtap="logoff" class="my-block">
+        <image class="icon-buiness" src="../../image/myUser/log-off.png"></image>
+    退出登录
+    <image class="icon-goRight" src="../../image/myUser/goRight.png"></image>
+    </view>
+</view>  

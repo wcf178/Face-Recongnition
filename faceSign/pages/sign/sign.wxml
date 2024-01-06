@@ -1,0 +1,36 @@
+<!--pages/sign/sign.wxml-->
+
+<view class = "sign_container">
+  <view class="sign_list" hidden="{{hide}}">
+    <view class="signDetail">
+  
+      <text class="textInfo">教师姓名：{{teahName}}
+
+      学科名称：{{subName}}
+
+      上课时间：{{startTime}}
+
+      下课时间：{{endTime}}</text>
+    </view>
+    <view class="signIn">
+    <button type="primary" bindtap="bindSignIn" disabled="{{debug}}">签到 </button>
+  </view>
+  <view class="signOut">
+    <button type="primary" bindtap="bindSignOut" disabled="{{debug}}">签退 </button>
+  </view>
+  </view>
+  <view class="default" hidden="{{hide}}">
+    <!-- <image class="no" src="../../image/pictures/暂无任务.png"></image> -->
+    <text class="noAttd">{{tip}}</text>
+    <text class="noAttd">下拉刷新~</text>
+  </view>
+  <view class="default" hidden="{{!hide}}">
+    <!-- <image class="no" src="../../image/pictures/暂无任务.png"></image> -->
+    <text class="noAttd">您当前暂未收到考勤任务</text>
+    <text class="noAttd">请下拉刷新~</text>
+  </view>
+
+  
+  
+
+</view>

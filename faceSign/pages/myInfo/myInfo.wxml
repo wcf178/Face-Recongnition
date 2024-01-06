@@ -1,0 +1,39 @@
+<!--pages/myInfo/myInfo.wxml-->
+<view class = "sign_container1">
+  <view class="sign_list1" hidden="{{hide}}">
+    
+    <view class="signDetail1">
+      <text class="textInfo1">学号：{{stuId}}
+
+      姓名：{{stuName}}
+
+      联系电话：{{stuPhone}}</text>
+    </view>
+    <view class="signDetail1">
+      <button bindtap="createWin">修改密码</button>
+    </view>
+    <modal hidden="{{hide1}}" title="重置密码" 
+   			confirm-text="提交" cancel-text="取消" bindcancel="modalinput" 
+   			bindconfirm="confirm">
+     <!-- 这里可以自由选择你的输入框类型<input type='text' placeholder="请输入内容" auto-focus/> -->
+     <view class="change">
+      <label class="loginLab">请输入原密码</label> 
+      <input class="inputText1" password="true" value="{{stuPwd1}}" bindinput="passwordInput" />
+     </view>
+     <view>
+      <label class="loginLab">请输入新密码</label> 
+      <input class="inputText1" password="true" model:value="{{newPwd1}}" bindinput="newPassword1Input" />
+     </view>
+     <view>
+      <label class="loginLab">请确认密码</label> 
+      <input class="inputText1" password="true" model:value="{{newPwd2}}" bindinput="newPassword2Input" />
+     </view>
+   </modal>
+    
+  </view>
+  <view class="default" hidden="{{!hide}}">
+    <!-- <image class="no" src="../../image/pictures/暂无任务.png"></image> -->
+    <text class="noAttd">您当前暂未收到考勤任务</text>
+    <text class="noAttd">请下拉刷新~</text>
+  </view>
+</view>

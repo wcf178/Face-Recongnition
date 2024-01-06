@@ -1,0 +1,6 @@
+/* pages/aboutUs/aboutUs.wxss */
+.about{
+  align-self: center;
+  display:flex;
+  justify-content: center;
+}

@@ -1,0 +1,21 @@
+/* pages/LogDetail/LogDetail.wxss */
+
+page{
+  width:auto;
+}
+.card{
+
+  align-self: center;
+  display: flex;
+  width: auto;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 35rpx; 
+  height: auto;
+  background: rgb(186, 201, 248);
+  border-radius: 10rpx;
+  box-shadow: 5px 5px 5px #cdcfcf;
+ }
