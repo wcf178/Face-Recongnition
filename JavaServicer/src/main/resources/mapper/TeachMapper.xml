@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcf.javaservicer.mapper.TeachMapper">
+    <select id="selectTeachersByName" resultType="com.wcf.javaservicer.pojo.Teacher" parameterType="string">
+        select * from teacher
+        <if test="queryString != null">
+            where teah_name = #{queryString}
+        </if>
+    </select>
+    <select id="selectSubjectsByName" resultType="com.wcf.javaservicer.pojo.Subject" parameterType="string">
+        select * from subject
+        <if test="queryString != null">
+            where sub_name = #{queryString} or sub_academy = #{queryString}
+        </if>
+    </select>
+    <delete id="deleteTeacherById" parameterType="int">
+        delete from teacher where teah_id = #{teahId}
+    </delete>
+    <delete id="deleteTeahSubById" parameterType="int">
+        delete from teacher_subject where teah_id = #{teahId}
+    </delete>
+
+    <delete id="deleteSubjectById" parameterType="int">
+        delete from subject where sub_id = #{subId}
+    </delete>
+    <select id="findTeacherBySubId" parameterType="int" resultType="int">
+        select count(0) from teacher_subject where sub_id = #{subId}
+    </select>
+    <select id="findTeacherById" parameterType="int" resultType="int">
+        select count(0) from teacher where teah_id = #{teahId}
+    </select>
+    <insert id="addTeacher" parameterType="com.wcf.javaservicer.pojo.Teacher">
+        insert into teacher(teah_id,teah_name,teah_pwd,teah_address,teah_phone,teah_age,teah_posts,permission)
+        values(#{teahId},#{teahName},#{teahPwd},#{teahAddress},#{teahPhone},#{teahAge},#{teahPosts},#{permission})
+    </insert>
+    <select id="findSubjectById" parameterType="int" resultType="int">
+        select count(0) from subject where sub_id = #{subId}
+    </select>
+    <select id="findSubjectByName" parameterType="string" resultType="int">
+        select count(0) from subject where sub_name = #{subName}
+    </select>
+    <insert id="addSubject" parameterType="com.wcf.javaservicer.pojo.Subject">
+        insert into subject(sub_id,sub_name,sub_academy,sub_info)
+        values (#{subId},#{subName},#{subAcademy},#{subInfo})
+    </insert>
+    <select id="getSubIdByClassId" parameterType="int" resultType="int">
+        select sub_id from teacher_subject where class_id = #{classId}
+    </select>
+    <select id="selectClassVo" parameterType="int" resultType="com.wcf.javaservicer.vo.ClassVo">
+        select c.class_id,s.sub_name,c.stu_id,st.stu_name,st.stu_phone from class c
+            left join teacher_subject ts on c.class_id = ts.class_id
+            left join subject s on s.sub_id = ts.sub_id
+            left join student st on c.stu_id = st.stu_id
+        <if test="classId != null">
+            where c.class_id = #{classId}
+        </if>
+
+    </select>
+    <delete id="deleteStudentById" parameterType="int" >
+        delete from class where stu_id = #{stuId}
+    </delete>
+    <select id="findAllStudents" resultType="com.wcf.javaservicer.vo.StudentVo">
+        select stu_id,stu_name from student;
+    </select>
+    <insert id="addClass" parameterType="com.wcf.javaservicer.pojo.TeacherSubject">
+        insert into teacher_subject(teah_id,sub_id,class_id)
+        values(#{teahId},#{subId},#{classId})
+    </insert>
+    <insert id="addStudents" >
+        insert into class(class_id,stu_id) values(#{classId},#{stuId})
+    </insert>
+    <select id="findAllTeachers" resultType="com.wcf.javaservicer.vo.WebTeacherVo">
+        select teah_id,teah_name from teacher
+    </select>
+    <select id="findAllSubjects" resultType="com.wcf.javaservicer.vo.WebSubVo">
+        select sub_id,sub_name from subject
+    </select>
+    <select id="findClassId" resultType="int">
+        select count(0) from teacher_subject where teah_id = #{teahId} and sub_id = #{subId}
+    </select>
+    <select id="IsClassIdExsit" resultType="int">
+        select count(0) from teacher_subject where class_id = #{classId}
+    </select>
+    <select id="getClassIdByteahId" resultType="Integer">
+        select classId from teacher_subject where teah_id = #{teahId}
+    </select>
+    <delete id="deletestudentByClassId" >
+        delete from class where class_id = #{classId}
+    </delete>
+</mapper>

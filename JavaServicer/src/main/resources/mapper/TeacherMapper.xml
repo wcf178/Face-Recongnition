@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcf.javaservicer.mapper.TeacherMapper">
+    <select id="findAll" resultType="com.wcf.javaservicer.pojo.Teacher">
+        select * from teacher
+    </select>
+    <select id="getPwdById" resultType="String" parameterType="int">
+        select teah_pwd from teacher where teah_id = #{userId}
+    </select>
+    <select id="findInfoById" resultType="com.wcf.javaservicer.pojo.Teacher" parameterType="int">
+        select  * from teacher where teah_id = #{teahId}
+    </select>
+    <select id="findSubsById" resultType="Integer" parameterType="int">
+        select sub_id from teacher_subject where teah_id = #{teahId}
+    </select>
+    <select id="getPermission" parameterType="int" resultType="string">
+        select permission from teacher where teah_id = #{userId}
+    </select>
+</mapper>

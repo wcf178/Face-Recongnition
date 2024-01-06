@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcf.javaservicer.mapper.StudentMapper">
+    <select id="findAll" resultType="com.wcf.javaservicer.pojo.Student">
+        select * from student
+    </select>
+    <select id="findFaceById" resultType="String" parameterType="int">
+        select stu_face from student where stu_id = #{stuId}
+   </select>
+    <update id="updateFaceById" parameterType="map">
+        update student set stu_face = #{stuFace} where stu_id = #{stuId}
+    </update>
+    <select id="findStuById" parameterType="int" resultType="int">
+        select count(0) from student where stu_id = #{userId}
+    </select>
+    <select id="getPwdById" parameterType="int" resultType="string">
+        select stu_pwd from student where stu_id = #{userId}
+    </select>
+    <select id="getAttdId" parameterType="int" resultType="long">
+        select stu_attdId from student where stu_id = #{stuId}
+    </select>
+    <select id="getAttdDateById" parameterType="long" resultType="java.sql.Date">
+        select attd_date from attd_class where attd_id = #{attdId}
+    </select>
+    <select id="getAttdInfoById" parameterType="long" resultType="com.wcf.javaservicer.vo.AttdInfoVo">
+        select ac.teah_id,ac.sub_id,ac.start_time,ac.end_time,t.teah_name,s.sub_name,ac.latitude,ac.longitude,ac.distance from attd_class ac
+            left join teacher t on t.teah_id = ac.teah_id
+            left join subject s on s.sub_id = ac.sub_id
+            where ac.attd_id = #{attdId}
+    </select>
+    <select id="getAttdLogCount" parameterType="int" resultType="int">
+        select count(0) from attd_log where stu_id = #{stuId}
+    </select>
+    <select id="getAttdLogsById" parameterType="int" resultType="com.wcf.javaservicer.vo.AttdLogVo">
+        select
+            al.attd_time,al.attd_flag,al.leave_time,al.leave_flag,
+            t.teah_name,t.teah_id,s.sub_name,s.sub_id,
+            ac.attd_date,ac.start_time,ac.end_time
+            from attd_log al
+            left join attd_class ac on al.attd_id = ac.attd_id
+            left join teacher t on t.teah_id = ac.teah_id
+            left join subject s on s.sub_id = ac.sub_id
+            where al.stu_id = #{stuId}
+    </select>
+    <select id="getMyInfo" parameterType="int" resultType="com.wcf.javaservicer.pojo.Student">
+        select * from student where stu_id = #{stuId}
+    </select>
+    <update id="updatePwdById" parameterType="com.wcf.javaservicer.vo.WebLoginVo">
+        update student set stu_pwd = #{stuPwd} where stu_id = #{stuId}
+    </update>
+    <select id="getAllFaceCodes" resultType="com.wcf.javaservicer.vo.StudentFaceVo">
+        select s.stu_id,stu_name,stu_face from student s where s.stu_id in (select c.stu_id from class c  where class_id = #{classId})
+    </select>
+    <update id="updateAttdLogIn" parameterType="map">
+        update attd_log set attd_time = #{time},attd_flag = #{flag},stu_name = #{attdStuName}
+            where stu_id = #{attdStuId} and attd_id = #{attdId}
+    </update>
+    <update id="updateAttdLogOut" parameterType="map">
+        update attd_log set leave_time = #{time},leave_flag = #{flag},stu_name = #{attdStuName}
+        where stu_id = #{attdStuId} and attd_id = #{attdId}
+    </update>
+    <select id="findClass" resultType="Integer">
+        select class_id from teacher_subject where teah_id = #{teahId} and sub_id = #{subId}
+    </select>
+</mapper>

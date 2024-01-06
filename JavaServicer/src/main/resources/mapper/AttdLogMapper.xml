@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcf.javaservicer.mapper.AttdLogMapper">
+    <select id="getAttdIdByOpt" resultType="long" parameterType="map">
+        select attd_id from attd_class where teah_id = #{teahId} and sub_id = #{subId} and attd_date = #{attdDate}
+    </select>
+    <select id="selectByAttdId" parameterType="map"
+            resultType="com.wcf.javaservicer.pojo.Attdlog">
+        select * from attd_log where attd_id = #{attdId}
+        <if test="attdFlag != 4">
+            and attd_flag = #{attdFlag}
+        </if>
+    </select>
+    <select id="selectEarlyByAttdId" parameterType="long" resultType="com.wcf.javaservicer.pojo.Attdlog">
+        select * from attd_log where attd_id = #{attdId} and leave_flag = 1
+    </select>
+    <insert id="addAttd" parameterType="map">
+        insert into attd_class(teah_id,sub_id,attd_id,attd_date,start_time,end_time,latitude,longitude,distance)
+        values (#{teahId},#{subId},#{attdId},#{attdDate},#{startTime},#{endTime},#{latitude},#{longitude},#{distance})
+    </insert>
+    <select id="getClassId" resultType="int">
+        select class_id from teacher_subject where teah_id = #{teahId} and sub_id = #{subId}
+    </select>
+    <select id="findStudentIdsByClassId" parameterType="int" resultType="int">
+        select stu_id from class where class_id = #{classId}
+    </select>
+    <update id="addAttdtoStudent" >
+        update student set stu_attdId = #{attdId} where stu_id = #{stuId}
+    </update>
+    <insert id="addNewLog">
+        insert into attd_log(stu_id,stu_name,attd_id) values(#{stuId},#{stuName},#{attdId})
+    </insert>
+    <select id="getTodayAttdCount" parameterType="map" resultType="Integer">
+        select count(0) from attd_class where teah_id = #{teahId} and sub_id = #{subId} and attd_date = #{attdDate}
+    </select>
+    <select id="getStuNameById" parameterType="int" resultType="string">
+        select stu_name from student where stu_id = #{stuId}
+    </select>
+
+</mapper>
